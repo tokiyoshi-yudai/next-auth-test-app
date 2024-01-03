@@ -63,12 +63,18 @@ import Google from "next-auth/providers/google"
 // import Zoho from "next-auth/providers/zoho"
 // import Zoom from "next-auth/providers/zoom"
 
+import { PrismaAdapter } from "@auth/prisma-adapter"
+// import { PrismaClient } from "@prisma/client"
+import { PrismaClient } from '@prisma/client/edge'
+const prisma = new PrismaClient()
+
 import type { NextAuthConfig } from "next-auth"
 
 export const config = {
   theme: {
     logo: "https://next-auth.js.org/img/logo/logo-sm.png",
   },
+  adapter: PrismaAdapter(prisma),
   providers: [
     // Apple,
     // Atlassian,
